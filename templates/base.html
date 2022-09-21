@@ -1,0 +1,41 @@
+{% load static %}
+{% load all_tags %}
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <title>{% block title %}Base{% endblock %}</title>
+  </head>
+  <body>
+    {% include 'inc/header.html' %}
+    {% include 'inc/popup.html' %}
+    {% block swiper %}
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block suppor_form %}
+    {% endblock %}
+
+    {% include 'inc/footer.html' %}
+
+    {% block scripts %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/homeSwiper.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+</html>

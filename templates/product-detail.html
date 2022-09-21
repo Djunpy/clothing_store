@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load all_tags %}
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+<section class="detail container">
+<div class="detail__box">
+    <div class="detail__img-box">
+        <img src="{{ object.image.url }}" alt="" id="detail-img">
+    </div>
+    <div class="detail__body">
+        <h1>{{ object.name }}</h1>
+        <h3>${{ object.price }}</h3>
+        <form action="" class="detail__form">
+            <div class="detail__wrapp-select">
+              <select>
+                <option value="Select Size" selected disabled>
+                  Select Size
+                </option>
+                <option value="1">32</option>
+                <option value="2">42</option>
+                <option value="3">52</option>
+                <option value="4">62</option>
+              </select>
+              <span><i class="bx bx-chevron-down"></i></span>
+            </div>
+            <input type="number" placeholder="шт" value="1" min="1">
+            <a href="#" class="btn add-cart">В корзину</a>
+        </form>
+{#        <div class="detail__description">#}
+{#            <h3>Описание товара</h3>#}
+{#        </div>#}
+    </div>
+</div>
+</section>
+    {% related_products %}
+
+{% endblock %}
+{% block scripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
+            crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/zoomsl.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#detail-img").imagezoomsl({
+                zoomrange: [4, 4],
+            });
+        });
+    </script>
+{% endblock %}

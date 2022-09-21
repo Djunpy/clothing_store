@@ -1,0 +1,38 @@
+{% for cat in categories %}
+    <li class="nav__list-item">
+        <a href="{{ cat.get_absolute_url }}" class="list__item-link">{{ cat.name }}</a>
+    </li>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+{#{% load static %}#}
+{##}
+{#    <section class="categories container">#}
+{#      <div class="categories__box">#}
+{#        <div class="category">#}
+{#            <a href=""><img src="{% static 'images/cat1.jpg' %}" alt="" class="category__img" /></a>#}
+{#          <div class="category__text">#}
+{#            <p>Мужчинам</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="category">#}
+{#            <a href=""><img src="{% static 'images/cat2.jpg' %}" alt="" class="category__img" /></a>#}
+{#          <div class="category__text">#}
+{#            <p>Женщинам</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="category">#}
+{#            <a href=""><img src="{% static 'images/cat3.jpg' %}" alt="" class="category__img" /></a>#}
+{#          <div class="category__text">#}
+{#            <p>Подросткам</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}

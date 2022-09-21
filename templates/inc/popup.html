@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="popup">
+    <div class="popup__content d-flex">
+        <div class="popup__close d-flex">
+            <i class='bx bx-x' id="popup__close"></i>
+        </div>
+        <div class="popup__img-box">
+            <div class="popup__img">
+                <img src="{% static 'images/popup.jpg' %}" alt="">
+            </div>
+        </div>
+        <div class="popup__info">
+            <div class="popup__info-box">
+                <h1>Получить скидку в <span>50%</span></h1>
+                <p>Подписавшись на нашу рассылку вы получите скидку. Никакого спама только выгодные предложения!)</p>
+                <form action="" class="popup__form d-flex">
+                    <input type="email" placeholder="Введите Email" class="support__input">
+                    <a href="" class="btn btn-subscribe">Подписаться</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

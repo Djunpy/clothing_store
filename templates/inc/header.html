@@ -1,0 +1,81 @@
+{% load all_tags %}
+
+
+<header class="header">
+    <div class="header__top-box">
+        <div class="top__box-number container d-flex">
+            <p>Контактный номер: +373-77-77-74</p>
+            <ul class="d-flex">
+                <li><a href="">FAQ</a></li>
+                <li><a href="">About us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header__nav">
+        <div class="nav__box container d-flex">
+            <a href="/" class="header__logo"><h1><span>This</span>Shop<i class='bx bx-crown' ></i></h1></a>
+            <ul class="nav__list d-flex">
+{#                <li class="nav__list-item">#}
+{#                    <a href="" class="list__item-link">Главная</a>#}
+{#                </li>#}
+                <li class="nav__list-item">
+                    <a href="{% url 'products' %}" class="list__item-link">Все товары</a>
+                </li>
+                {% show_category %}
+{#                <li class="nav__list-item">#}
+{#                    <a href="{% url 'products' %}" class="list__item-link">{{ node.name }}</a>#}
+{#                </li>#}
+
+                <li class="nav__icons d-flex">
+                    <a href="{% url 'authorization' %}"  class="nav__icons-link">
+                        <i class="bx bx-user"></i>
+                    </a>
+                    <a href="" class="nav__icons-link">
+                        <i class="bx bx-search-alt-2"></i>
+                    </a>
+                    <div href="" class="nav__icons-link">
+                        <i class="bx bx-heart"></i>
+                        <span class="d-flex">0</span>
+                    </div>
+                    <div class="nav__icons-link">
+                        <a href="{% url 'order-summary' %}" class="bx bx-cart"></a>
+                        {% if request.user|cart_item_count != 0 %}
+                            <span class="d-flex">{{ request.user|cart_item_count }}</span>
+                        {% else %}
+                            <span class="d-flex">0</span>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+
+            <div class="nav__second-icons d-flex">
+                <a href="{% url 'authorization' %}" class="nav__icons-link">
+                    <i class="bx bx-user"></i>
+                </a>
+                <a href="" class="nav__icons-link">
+                    <i class="bx bx-search-alt-2"></i>
+                </a>
+                <div href="" class="nav__icons-link">
+                    <i class="bx bx-heart"></i>
+                    <span class="d-flex">0</span>
+                </div>
+                <div class="nav__icons-link">
+                    {% if request.user %}
+                        <a href="{% url 'order-summary' %}" class="bx bx-cart"></a>
+                    {% else %}
+                        <a href="{% url 'authorization' %}" class="bx bx-cart"></a>
+                    {% endif %}
+                    {% if request.user|cart_item_count != 0 %}
+                        <span class="d-flex">{{ request.user|cart_item_count }}</span>
+                    {% else %}
+                        <span class="d-flex">0</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="header__hamburger">
+                <i class="bx bx-menu-alt-left" id="hamburger-menu"></i>
+            </div>
+        </div>
+    </div>
+</header>

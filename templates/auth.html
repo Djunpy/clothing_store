@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="auth container">
+        <div class="auth__box">
+            <div class="auth__login">
+                <h2>У вас уже есть аккаунт ?</h2>
+                <button class="btn" id="login">Войти</button>
+            </div>
+            <div class="auth__signup">
+                 <h2>У вас нет аккаунта ?</h2>
+                <button class="btn" id="signup">Регистрация</button>
+            </div>
+        </div>
+        <div class="auth__form-box">
+            <form action="{% url 'account_login' %}" method="post" class="auth__form form__login">
+                {% csrf_token %}
+                <h3>Вход</h3>
+                <p>
+                    <input type="text" placeholder="Логин" name="login" id="id_login" autocomplete="username" class="form__login-input">
+                </p>
+
+                <p>
+                    <input type="password" placeholder="Пароль" class="form__login-input" name="password" required="" id="id_password">
+                </p>
+                <p>
+                    <button class="btn btn-auth">Войти</button>
+                </p>
+                <p>
+                    <a href="#">Восстановить пароль</a>
+                </p>
+            </form>
+
+            <form action="{% url 'account_signup' %}" method="post" class="auth__form form__signup">
+                {% csrf_token %}
+                <h3>Регистрация</h3>
+                <p>
+                    <input type="text" name="username" placeholder="Логин" autocomplete="username" minlength="1" maxlength="150" required="" id="id_username">
+                </p>
+                <p>
+                    <input type="email" name="email" placeholder="E-mail address" autocomplete="email" id="id_email">
+                </p>
+                <p>
+                    <input type="password" name="password1" placeholder="Пароль" autocomplete="new-password" required="" id="id_password1">
+                </p>
+                <p>
+                    <input type="password" name="password2" placeholder="Повторите пароль" autocomplete="new-password" required="" id="id_password2">
+                </p>
+                <p>
+                    <button class="btn btn-auth">Регистрация</button>
+                </p>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

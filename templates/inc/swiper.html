@@ -1,0 +1,38 @@
+{% load static %}
+<section class="home" id="home">
+    <div class="swiper mySwiper home__swiper">
+        <div class="swiper-wrapper">
+            {% for d in discount %}
+                <div class="swiper-slide home__slide">
+                    <div class="swiper__content">
+                        <span>{{ d.name }}!</span>
+                        <h3>{{ d.percent }}%</h3>
+                        <p>
+                            {{ d.description }}
+                        </p>
+                        <a href="{{ d.get_absolute_url }}" class="btn btn-swiper">Перейти</a>
+                    </div>
+                    <div class="home__swiper-img">
+                        <img src="{% static 'images/hero-1.png' %}" alt=""/>
+                    </div>
+                </div>
+                <div class="swiper-slide home__slide">
+                    <div class="swiper__content">
+                        <span>{{ d.name }}!</span>
+                        <h3>{{ d.percent }}%</h3>
+                        <p>
+                            {{ d.description }}
+                        </p>
+                        <a href="{{ d.get_absolute_url }}" class="btn btn-swiper">Перейти</a>
+                    </div>
+                    <div class="home__swiper-img">
+                        <img src="{% static 'images/hero-2.png' %}" alt=""/>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+        <!-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> -->
+        <div class="swiper-pagination"></div>
+    </div>
+</section>

@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ title_page }}{% endblock %}
+{% block content %}
+    <section class="products container">
+        <div class="products__nav">
+            <h1>Весь ассортимент</h1>
+            <form action="{% url 'by-gender' %}" method="get" class="products__filter">
+                <select id="filter__select">
+                    <option value="">Все товары</option>
+                    <option value="men" name="men">Мужчинам</option>
+                    <option value="women" name="women">Женщинам</option>
+                    <option value="Children" name="Children">Детям</option>
+                </select>
+                <span><i class="bx bx-chevron-down"></i></span>
+            </form>
+        </div>
+
+        <div class="products__box">
+            {% for obj in object_list %}
+                <div class="products__item" data-product-id="{{ obj.pk }}">
+                    <div class="item__view">
+                        <a href="" class="item__view-link">
+                            <img src="{{ obj.image.url }}" alt="">
+                        </a>
+                        {% if obj.discount %}
+                            <span class="item__discount">{{ obj.discount.percent }}%</span>
+                        {% endif %}
+                    </div>
+                    <div class="item__info">
+                        <span>{{ obj.category }}</span>
+                        <h3>{{ obj.name|truncatewords:2 }}</h3>
+                        <h4>{{ obj.price }} $</h4>
+                        <ul class="item__icons">
+                            <li><a class="bx bx-heart"></a></li>
+                            <li><a href="{{ obj.get_absolute_url }}" class="bx bx-search"></a></li>
+                            <li><a class="bx bx-cart" id="add-cart" data-product-id="{{ obj.pk }}"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <a href=""><span>Мужчинам</span></a>#}
+{#                    <h3 class="item__title">Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="products__item">#}
+{#                <div class="item__view">#}
+{#                    <a href="" class="item__view-link">#}
+{#                        <img src="{% static 'images/product-5.jpg' %}" alt="">#}
+{#                    </a>#}
+{#                    <span class="item__discount">60%</span>#}
+{#                </div>#}
+{#                <div class="item__info">#}
+{#                    <span>Мужчинам</span>#}
+{#                    <h3>Title</h3>#}
+{#                    <h4>600</h4>#}
+{#                    <ul class="item__icons">#}
+{#                        <li><i class="bx bx-heart"></i></li>#}
+{#                        <li><i class="bx bx-search"></i></li>#}
+{#                        <li><i class="bx bx-cart"></i></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </section>
+    {% if is_paginated %}
+        {% include 'inc/pagination.html' %}
+    {% endif %}
+{% endblock %}
+{#{% block scripts %}#}
+{#    <script src="{% static 'js/products.js' %}"></script>#}
+{#{% endblock %}#}
