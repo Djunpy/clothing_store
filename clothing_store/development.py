@@ -1,4 +1,4 @@
-from base import *
+from .base import *
 
 
 SECRET_KEY = 'django-insecure-8%z-qoa5&9-4s8--_9*0c%pi^sh$--@d%y6tloeb8*k#72cof0'

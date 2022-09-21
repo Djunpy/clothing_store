@@ -1,8 +1,7 @@
 import decouple
 import dj_database_url
 import django_on_heroku
-
-from base import *
+from .base import *
 
 SECRET_KEY = decouple.config('SECRET_KEY')
 ALLOWED_HOSTS = ['.herokuapp.com']
