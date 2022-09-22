@@ -54,7 +54,7 @@ class ProductDetailView(DetailView):
 
 
 class ByCategoryView(ProductsView):
-    model = Product
+    # model = Product
     template_name = 'products.html'
     paginate_by = 2
     allow_empty = False
