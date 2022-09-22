@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.decorators.cache import cache_page
 
 from .models import CartProduct, Product, Category, Discount
 from orders.models import Order
