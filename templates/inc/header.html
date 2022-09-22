@@ -1,5 +1,7 @@
 {% load all_tags %}
+{% load cache %}
 
+{% cache 500 cache_header %}
 
 <header class="header">
     <div class="header__top-box">
@@ -79,3 +81,5 @@
         </div>
     </div>
 </header>
+
+{% endcache %}

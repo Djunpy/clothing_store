@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 500 cache_support %}
 <section class="support">
     <div class="support__box d-flex">
         <div class="support__info">
@@ -14,3 +17,5 @@
         </div>
     </div>
 </section>
+
+{% endcache %}

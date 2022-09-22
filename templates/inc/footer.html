@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 500 cache_footer %}
 <footer class="footer">
     <div class="footer__box">
         <div class="footer__info d-flex">
@@ -20,3 +23,4 @@
         </div>
     </div>
 </footer>
+{% endcache %}

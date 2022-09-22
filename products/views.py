@@ -6,11 +6,13 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.cache import cache_page
 
 from .models import CartProduct, Product, Category, Discount
 from orders.models import Order
 
 
+@cache_page(60 * 15)
 class HomePageView(ListView):
     model = Product
     queryset = Product.objects.select_related('category').filter(available=True)[:8]
@@ -23,6 +25,7 @@ class HomePageView(ListView):
         return context
 
 
+@cache_page(60 * 15)
 class ProductsView(ListView):
     model = Product
     template_name = 'products.html'
@@ -53,6 +56,7 @@ class ProductDetailView(DetailView):
         return queryset
 
 
+@cache_page(60 * 15)
 class ByCategoryView(ProductsView):
     model = Product
     template_name = 'products.html'
