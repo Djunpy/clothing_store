@@ -19,7 +19,6 @@ DATABASES = {
     }
 }
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
