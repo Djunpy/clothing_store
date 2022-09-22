@@ -6,7 +6,7 @@ from .base import *
 SECRET_KEY = decouple.config('SECRET_KEY')
 ALLOWED_HOSTS = ['.herokuapp.com']
 
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     'default': {
@@ -23,5 +23,8 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 django_on_heroku.settings(locals(), staticfiles=False)
