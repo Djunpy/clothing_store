@@ -54,6 +54,7 @@ class ProductDetailView(DetailView):
 
 
 class ByCategoryView(ProductsView):
+    """Получение списка товаров по категории"""
     # model = Product
     template_name = 'products.html'
     paginate_by = 2
